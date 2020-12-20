@@ -12,15 +12,13 @@ Django 3.1.4<br>
 
 # Installation
 
-Please note that you will have to set up your own SECRET_KEY before launching the server. You can use the shell within your project (manage module) to create a SECRET_KEY.
+Please note that you will have to set up your own `SECRET_KEY` before launching the server. You can use the shell within your project (manage module) to create a `SECRET_KEY`.
 
-'''
-python manage.py shell
-'''
+`python manage.py shell`
 
-'''Python
+```Python
 from django.core.management.utils import get_random_secret_key
 print(get_random_secret_key())
-'''
+```
 
-Copy and paste the printed string into the /mysite/mysite/settings.py SECRET_KEY variable.
+Copy and paste the printed string into the /mysite/mysite/settings.py `SECRET_KEY` variable.
