@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from .models import TodoItem
-import time
+from datetime import datetime
+from pytz import timezone
+import pytz
 
 # Render the todo.html template and in the same request, send a dictionary of
 # all items in the db.
@@ -10,15 +12,22 @@ def todoView(request):
     return render(request, 'todo.html',
         {'all_items': all_todo_items})
 
-# Save the request content sent via form input submit. Redirect to todoView.
+# Create new TodoItem object and save it to the db.
 def addTodo(request):
     new_item = TodoItem()
     new_item.content = request.POST['content']
-    new_item.time = time.asctime(time.localtime(time.time()))
+
+    # Generate timestamp for todo item.
+    date_format = '%m/%d/%Y %H:%M:%S %Z'
+    date = datetime.now(tz=pytz.utc)
+    date = date.astimezone(timezone('US/Pacific'))
+    new_item.time = date.strftime(date_format)
+
+    # Save item to db and redirect to home page.
     new_item.save()
     return HttpResponseRedirect('/todo/')
 
-# Delete the item at the selected ID. Request via form input delete. Redirect to todoView.
+# Delete item by ID and redirect to todoView.
 def deleteTodo(request, todo_id):
     item_to_delete = TodoItem.objects.get(id=todo_id)
     item_to_delete.delete()
