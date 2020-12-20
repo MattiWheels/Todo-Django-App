@@ -5,6 +5,7 @@ Django 3.1.4<br>
 
 # Features
 
-- Lists all todo items from a database.
+- List all todo items from a database.
 - Add items to the todo list.
-- Delete item from the todo list.
+- Delete items from the todo list.
+- Timestamp new todo items.
