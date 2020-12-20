@@ -12,6 +12,10 @@ Django 3.1.4<br>
 
 # Installation
 
+Insert Django project setup instructions here ...
+
+## SECRET_KEY
+
 Please note that you will have to set up your own `SECRET_KEY` before launching the server. You can use the shell within your project (manage module) to create a `SECRET_KEY`. If you are using a virtual environment with your django project, make sure it is activated before running the following script.
 
 `python manage.py shell`
