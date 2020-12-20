@@ -1,5 +1,7 @@
 from django.db import models
 
-# Create your models here.
+# When called, create a TextField object that will store data in the
+# todo_todoitem table of the db file in the main directory.
+
 class TodoItem(models.Model):
     content = models.TextField()
