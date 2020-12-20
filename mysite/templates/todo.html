@@ -1,30 +1,40 @@
-<h1>todo</<h1>
 
-<!--
+{% load static %}
+<html>
+  <head>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
+  </head>
+  <body>
+    <div class="header">
+      <h1>todo</<h1>
+    </div>
+  <!--
+  Style reset for list.
+  Lists all items in the todo_todoitem table from the database in the main
+  directory. Items are deleted from the db with the submit input.
 
-Style reset for list.
-Lists all items in the todo_todoitem table from the database in the main
-directory. Items are deleted from the db with the submit input.
+  The text input can be used to add items to the db. Click submit or press 'enter'
+  to addTodo.
+  -->
 
-The text input can be used to add items to the db. Click submit or press 'enter'
-to addTodo.
-
--->
-
-<ul style="all:initial;
-  * {all: unset;}">
-  {% for todo in all_items %}
-    <li>&bull; &nbsp;{{ todo.content }} ~~~ {{ todo.time }}
-      <form action="/deleteTodo/{{ todo.id }}/"
-            style="display:inline;"
-            method="post">{% csrf_token %}
-        <input type="submit" value="Delete"/>
+    <div class="todolist">
+      <ul>
+        {% for todo in all_items %}
+          <li>{{ todo.content }} ~~~ {{ todo.time }}
+            <form action="/deleteTodo/{{ todo.id }}/"
+              style="display:inline;"
+              method="post">{% csrf_token %}
+              <input type="submit" value="Delete"/>
+            </form>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="addform">
+      <form action="/addTodo/" method="post">{% csrf_token %}
+        <input type="text" name="content"/>
+        <input type="submit" value="Add"/>
       </form>
-    </li>
-  {% endfor %}
-</ul>
-
-<form action="/addTodo/" method="post">{% csrf_token %}
-  <input type="text" name="content"/>
-  <input type="submit" value="Add"/>
-</form>
+    </div>
+  </body>
+</html>
