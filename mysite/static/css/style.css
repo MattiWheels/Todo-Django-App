@@ -42,19 +42,33 @@ table {
 	border-spacing: 0;
 }
 
+input, button, submit {
+  border:none;
+ }
+
+ *:focus {
+  outline: none;
+ }
+
+html {
+  background-color: #45413f
+}
+
 body {
   padding-left: 50px;
   padding-top: 50px;
 }
 
 h1 {
-  color: #3b700c;
+  color: #de5243;
   font-size: 42px;
+  font-weight: 600;
   padding-bottom: 25px;
 }
 
 li {
   padding: 25px;
+  color: #fff;
 }
 
 .todolist {
@@ -62,11 +76,19 @@ li {
 }
 
 .todolist input {
-  padding: 0;
   float: right;
+  background-color: inherit;
+  color: #de5243;
+  font-style: italic;
 }
 
 .addform {
   padding-top: 25px;
   padding-left: 25px;
+}
+
+.addform input[type=submit] {
+  background-color: inherit;
+  color: #de5243;
+  font-style: italic;
 }
