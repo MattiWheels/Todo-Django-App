@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from .models import TodoItem
+import time
 
 # Render the todo.html template and in the same request, send a dictionary of
 # all items in the db.
@@ -11,7 +12,9 @@ def todoView(request):
 
 # Save the request content sent via form input submit. Redirect to todoView.
 def addTodo(request):
-    new_item = TodoItem(content = request.POST['content'])
+    new_item = TodoItem()
+    new_item.content = request.POST['content']
+    new_item.time = time.asctime(time.localtime(time.time()))
     new_item.save()
     return HttpResponseRedirect('/todo/')
 
