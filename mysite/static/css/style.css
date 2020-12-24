@@ -55,15 +55,14 @@ html {
 }
 
 body {
-  padding-left: 50px;
-  padding-top: 50px;
+  padding: 50px 0 0 50px;
 }
 
 h1 {
   color: #de5243;
   font-size: 42px;
   font-weight: 600;
-  padding-bottom: 25px;
+  padding: 25px 0 25px 25px;
 }
 
 li {
@@ -71,11 +70,16 @@ li {
   color: #fff;
 }
 
-.todolist {
-  width: 600px;
+input[type=text] {
+  background-color: #918471;
 }
 
-.todolist input {
+.todolist {
+  width: 600px;
+  background-color: #59544d;
+}
+
+.todolist li input {
   float: right;
   background-color: inherit;
   color: #de5243;
@@ -83,8 +87,7 @@ li {
 }
 
 .addform {
-  padding-top: 25px;
-  padding-left: 25px;
+  padding: 25px 0 25px 25px;
 }
 
 .addform input[type=submit] {

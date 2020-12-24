@@ -5,36 +5,25 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
   </head>
   <body>
-    <div class="header">
-      <h1>todo</<h1>
-    </div>
-  <!--
-  Style reset for list.
-  Lists all items in the todo_todoitem table from the database in the main
-  directory. Items are deleted from the db with the submit input.
-
-  The text input can be used to add items to the db. Click submit or press 'enter'
-  to addTodo.
-  -->
-
     <div class="todolist">
+      <h1>todo</h1>
       <ul>
         {% for todo in all_items %}
-          <li>{{ todo.content }} ~~~ {{ todo.time }}
+          <li>{{ todo.content }} ~~~ {{ todo.time }} <!-- List todo item content and time -->
             <form action="/deleteTodo/{{ todo.id }}/"
               style="display:inline;"
               method="post">{% csrf_token %}
-              <input type="submit" value="Delete"/>
+              <input type="submit" value="Delete"/> <!-- Delete todo item -->
             </form>
           </li>
         {% endfor %}
       </ul>
-    </div>
-    <div class="addform">
-      <form action="/addTodo/" method="post">{% csrf_token %}
-        <input type="text" name="content"/>
-        <input type="submit" value="Add"/>
-      </form>
+      <div class="addform">
+        <form action="/addTodo/" method="post">{% csrf_token %}
+          <input type="text" name="content"/>
+          <input type="submit" value="Add"/>
+        </form>
+      </div>
     </div>
   </body>
 </html>
