@@ -31,7 +31,7 @@
       </ul>
 
       <div class="addform p-4">
-        <form action="/addTodo/" method="post">{% csrf_token %}
+        <form name="addTodoForm" action="/addTodo/" method="post">{% csrf_token %} <!-- When next page validation is ready: onsubmit="validateForm()" -->
           <input type="text" name="content"/>
           <input type="submit" value="Add"/>
         </form>
@@ -39,6 +39,15 @@
     </div>
 
     <!-- Optional JavaScript -->
+    <script>
+      function validateForm() {
+        var x = document.forms["addTodoForm"]["content"].value;
+        if (x == "" || x == null) {
+          alert("Type something before submitting.");
+          return false;
+        }
+      }
+    </script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
