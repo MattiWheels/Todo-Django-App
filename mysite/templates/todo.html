@@ -9,11 +9,11 @@
       <h1>todo</h1>
       <ul>
         {% for todo in all_items %}
-          <li>{{ todo.content }} ~~~ {{ todo.time }} <!-- List todo item content and time -->
+          <li>{{ todo.content }}<br>{{ todo.time }} <!-- List todo item content and time -->
             <form action="/deleteTodo/{{ todo.id }}/"
               style="display:inline;"
               method="post">{% csrf_token %}
-              <input type="submit" value="Delete"/> <!-- Delete todo item -->
+              <input id="deleteBtn" type="submit" value="Delete"/> <!-- Delete todo item -->
             </form>
           </li>
         {% endfor %}

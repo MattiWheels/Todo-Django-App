@@ -25,10 +25,10 @@ def addTodo(request):
 
     # Save item to db and redirect to home page.
     new_item.save()
-    return HttpResponseRedirect('/todo/')
+    return HttpResponseRedirect('/')
 
 # Delete item by ID and redirect to todoView.
 def deleteTodo(request, todo_id):
     item_to_delete = TodoItem.objects.get(id=todo_id)
     item_to_delete.delete()
-    return HttpResponseRedirect('/todo/')
+    return HttpResponseRedirect('/')

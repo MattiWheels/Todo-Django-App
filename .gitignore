@@ -1,2 +1,6 @@
 **/.DS_Store
 **/__pycache__
+/venv
+/mysite/todo/migrations
+/mysite/mysite/secret_key.py
+/mysite/db.sqlite3
