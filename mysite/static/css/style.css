@@ -1,98 +1,26 @@
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-
-input, button, submit {
-  border:none;
- }
-
- *:focus {
-  outline: none;
- }
-
 html {
-  background-color: #45413f
-}
-
-body {
-  padding: 50px 0 0 50px;
+  background-color: #21262c;
 }
 
 h1 {
   color: #de5243;
-  font-size: 42px;
-  font-weight: 600;
-  padding: 25px 0 25px 25px;
-}
-
-li {
-  padding: 25px;
-  color: #fff;
-}
-
-input[type=text] {
-  background-color: #918471;
 }
 
 .todolist {
   width: 600px;
-  background-color: #59544d;
 }
 
 .todolist li input {
-  float: right;
   background-color: inherit;
   color: #de5243;
-  font-style: italic;
 }
 
-.addform {
-  padding: 25px 0 25px 25px;
-}
-
-.addform input[type=submit] {
+.addform input {
   background-color: inherit;
+  border: 1px solid #de5243;
   color: #de5243;
-  font-style: italic;
-  padding-left: 25px;
+}
+
+#time {
+  color: rgb(226, 140, 124);
 }
