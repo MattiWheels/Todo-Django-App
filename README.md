@@ -12,17 +12,12 @@ Django 3.1.4<br>
 
 # Installation
 
-Insert Django project setup instructions here ...
+- Install Python and Git
+- Clone repo from cmd or terminal: `git clone https://github.com/MattiWheels/Todo-Django-App.git`
+- Navigate into the project folder: `cd Todo-Django-App`
+- Set up a virtual environment to consolidate packages: `python -m venv venv`
+- Activate virtual environment: `venv\Scripts\activate` or `source venv/bin/activate` on Unix based systems
+- Install the required packages: `pip install -r requirements.txt`
+- Update the `SECRET_KEY` variable to have a random string of characters (fine for testing purposes)
+- Be sure to create necessary database files by navigating to mysite (`cd mysite`) and running the following bash commands: `python manage.py makemigrations` followed by `python manage.py migrate`
 
-## SECRET_KEY
-
-Please note that you will have to set up your own `SECRET_KEY` before launching the server. You can use the shell within your project (manage module) to create a `SECRET_KEY`. If you are using a virtual environment with your django project, make sure it is activated before running the following script.
-
-`python manage.py shell`
-
-```Python
->>>from django.core.management.utils import get_random_secret_key
->>>print(get_random_secret_key())
-```
-
-Copy and paste the printed string into the /mysite/mysite/settings.py `SECRET_KEY` variable.
