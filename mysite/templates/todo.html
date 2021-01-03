@@ -16,8 +16,8 @@
   </head>
   <body class="mt-4 bg-dark">
     <h1 class="p-4">todo</h1>
-    <div class="todolist">
-      <ul class="p-4 list-group list-group-flush">
+    <div class="todo-container">
+      <ul class="todoitem-list p-4 list-group list-group-flush">
         {% for todo in all_items %}
           <li class="todoitem list-group-item bg-dark text-light">
             {{ todo.content }}<br>

@@ -6,13 +6,17 @@ h1 {
   color: #de5243;
 }
 
-.todolist {
-  width: 600px;
+.todoitem-list {
+  width: 500px;
 }
 
-.todolist li input {
+.todo-container li input {
   background-color: inherit;
   color: #de5243;
+}
+
+.todo-container li input:hover {
+  color: #e28c7c;
 }
 
 .addform input {
@@ -21,6 +25,10 @@ h1 {
   color: #de5243;
 }
 
+.addform input:hover {
+  color: #fff;
+}
+
 #time {
-  color: rgb(226, 140, 124);
+  color: #e28c7c;
 }
