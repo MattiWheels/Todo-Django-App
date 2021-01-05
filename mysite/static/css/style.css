@@ -6,10 +6,6 @@ h1 {
   color: #de5243;
 }
 
-.todoitem-list {
-  width: 500px;
-}
-
 .todo-container li input {
   background-color: inherit;
   color: #de5243;
