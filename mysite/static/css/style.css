@@ -3,6 +3,11 @@ html {
 }
 
 h1 {
+  color: #545f6d;
+  font-weight: 700;
+}
+
+h2 {
   color: #de5243;
 }
 
