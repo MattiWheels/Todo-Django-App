@@ -30,10 +30,10 @@
         {% endfor %}
       </ul>
 
-      <div class="addform p-4">
+      <div class="addform p-5">
         <form name="addTodoForm" action="/addTodo/" method="post">{% csrf_token %} <!-- When next page validation is ready: onsubmit="validateForm()" -->
-          <input type="text" name="content"/>
-          <input type="submit" value="Add"/>
+          <input class="w-75 px-2" type="text" name="content" placeholder="what do you need to get done?"/>
+          <input class="px-4 float-right" type="submit" value="Add"/>
         </form>
       </div>
     </div>
