@@ -6,4 +6,4 @@ from django.db import models
 class TodoItem(models.Model):
     content = models.TextField()
     time = models.TextField()
-    todolist = models.IntegerField(null=True)
+    todolist = models.IntegerField(default=0)

@@ -20,10 +20,6 @@ h2 {
   color: #e28c7c;
 }
 
-.todolist-list {
-  /*box-shadow: 0 0 0 1rem rgb(211, 87, 87);*/
-}
-
 .addform input {
   background-color: inherit;
   border: 1px solid #de5243;
@@ -36,4 +32,8 @@ h2 {
 
 #time {
   color: #e28c7c;
+}
+
+#deleteBtn {
+  color: #de5243;
 }

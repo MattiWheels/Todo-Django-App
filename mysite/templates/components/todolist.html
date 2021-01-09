@@ -1,0 +1,25 @@
+{% extends '../todo.html' %}
+
+<div class="todolist-list col">
+    <div class="list-heading p-4">
+      <h2>secondary list</h2>
+    </div>
+    <ul class="list-group list-group-flush">
+      {% for todo in all_items %}
+        <li class="todoitem list-group-item bg-dark text-light">
+          {{ todo.content }}<br>
+          <span id="time">{{ todo.time }}</span><br> <!-- List todo item content and time -->
+          
+          <form action="/deleteTodo/{{ todo.id }}/" method="post">{% csrf_token %}
+            <input class="btn btn-link" id="deleteBtn" type="submit" value="Delete"/> <!-- Delete todo item -->
+          </form>
+        </li>
+      {% endfor %}
+    </ul>
+    <div class="addform">
+      <form class="w-100 p-4" name="addTodoForm" action="/addTodo/" method="post">{% csrf_token %} <!-- When next page validation is ready: onsubmit="validateForm()" -->
+        <input class="w-75" type="text" name="content" placeholder="what to do..."/>
+        <input class="px-4 float" type="submit"/>
+      </form>
+    </div>
+</div>
