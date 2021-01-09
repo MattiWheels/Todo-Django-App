@@ -13,7 +13,9 @@ def todoView(request):
     list_count = TodoItem.objects.all().aggregate(Max('todolist'))['todolist__max']
     all_items = {}
 
-    if list_count > 0:
+    if list_count is None:
+        all_items['list_0'] = []
+    elif list_count > 0:
         for i in range(list_count):
             items = [x for x in TodoItem.objects.filter(todolist=i)]
             all_items[f'list_{i}'] = items
