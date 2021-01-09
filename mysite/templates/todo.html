@@ -14,39 +14,63 @@
 
     <title>- TO DO -</title>
   </head>
-  <body class="mt-5 bg-dark">
-    <h1 class="p-4">todo</h1>
-    
-      <div class="todo-container d-inline-block w-50">
-        <div class="list-heading">
-          <h2 class="p-4">list #1</h2>
+  <body class="bg-dark">
+    <h1 class="p-4">todo</h1> <!--Logo-->
+
+    <div class="todo-container row d-flex flex-wrap"> <!--There will be multiple `todoitem-list` in this container-->
+      <div class="todolist-list col">
+        <div class="list-heading p-4">
+          <h2>this is the only list available :(</h2>
         </div>
-
-        <div class="todoitem-list float-left">
-          <ul class="p-4 list-group list-group-flush">
-            {% for todo in all_items %}
-              <li class="todoitem list-group-item bg-dark text-light">
-                {{ todo.content }}<br>
-                <span id="time">{{ todo.time }}</span><br> <!-- List todo item content and time -->
-                
-                <form action="/deleteTodo/{{ todo.id }}/" method="post">{% csrf_token %}
-                  <input class="btn btn-link" id="deleteBtn" type="submit" value="Delete"/> <!-- Delete todo item -->
-                </form>
-              </li>
-            {% endfor %}
-          </ul>
-
-          <div class="addform p-5">
-            <form name="addTodoForm" action="/addTodo/" method="post">{% csrf_token %} <!-- When next page validation is ready: onsubmit="validateForm()" -->
-              <input class="w-75 px-2" type="text" name="content" placeholder="what do you need to get done?"/>
-              <input class="px-4 float-right" type="submit" value="Add"/>
-            </form>
-          </div>
+        <ul class="list-group list-group-flush">
+          {% for todo in all_items %}
+            <li class="todoitem list-group-item bg-dark text-light">
+              {{ todo.content }}<br>
+              <span id="time">{{ todo.time }}</span><br> <!-- List todo item content and time -->
+              
+              <form action="/deleteTodo/{{ todo.id }}/" method="post">{% csrf_token %}
+                <input class="btn btn-link" id="deleteBtn" type="submit" value="Delete"/> <!-- Delete todo item -->
+              </form>
+            </li>
+          {% endfor %}
+        </ul>
+        <div class="addform">
+          <form class="w-100 p-4" name="addTodoForm" action="/addTodo/" method="post">{% csrf_token %} <!-- When next page validation is ready: onsubmit="validateForm()" -->
+            <input class="w-75" type="text" name="content" placeholder="what to do..."/>
+            <input class="px-4 float" type="submit"/>
+          </form>
         </div>
-
       </div>
 
-      <!-- Optional JavaScript -->
+      <!--
+        <div class="todolist-list col">
+        <div class="list-heading p-4">
+          <h2>deceivingly still the same list</h2>
+        </div>
+        <ul class="list-group list-group-flush">
+          {% for todo in all_items %}
+            <li class="todoitem list-group-item bg-dark text-light">
+              {{ todo.content }}<br>
+              <span id="time">{{ todo.time }}</span><br>
+              
+              <form action="/deleteTodo/{{ todo.id }}/" method="post">{% csrf_token %}
+                <input class="btn btn-link" id="deleteBtn" type="submit" value="Delete"/>
+              </form>
+            </li>
+          {% endfor %}
+        </ul>
+        <div class="addform">
+          <form class="w-100 p-4" name="addTodoForm" action="/addTodo/" method="post">{% csrf_token %}
+            <input class="w-75" type="text" name="content" placeholder="what to do..."/>
+            <input class="px-4 float" type="submit" value="Add"/>
+          </form>
+        </div>
+      </div>
+      -->
+      
+    </div>
+
+    <!-- Optional JavaScript -->
     <script>
       window.onload = function() {
         var input = document.getElementById("todo-input").focus();
