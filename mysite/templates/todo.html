@@ -30,7 +30,6 @@
               <li class="todoitem list-group-item bg-dark text-light">
                 {{ todo.content }}<br>
                 <span id="time">{{ todo.time }}</span><br> <!-- List todo item content and time -->
-                
                 <form action="/deleteTodo/{{ todo.id }}/" method="post">{% csrf_token %}
                   <input class="btn btn-link" id="deleteBtn" type="submit" value="Delete"/> <!-- Delete todo item -->
                 </form>

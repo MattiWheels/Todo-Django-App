@@ -1,0 +1,39 @@
+
+{% load static %}
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>- TESTING AREA -</title>
+    </head>
+
+    <body>
+        <div class="todo-container">
+            <h1>todo</h1>
+            <ul class="todoitem-list">
+                {% for todo in all_items %}
+                    <li class="todoitem">{{ todo.content }}<br>
+                        <span id="time">{{ todo.time }}</span><br> <!-- List todo item content and time -->
+
+                        <form action="/deleteTodo/{{ todo.id }}/" method="post">{% csrf_token %}
+                            <input id="deleteBtn" type="submit" value="Delete"/> <!-- Delete todo item -->
+                        </form>
+                    </li>
+                {% endfor %}
+            </ul>
+            <div class="addform">
+                <form name="addTodoForm" action="/addTodo/0/" method="post">{% csrf_token %} <!-- When next page validation is ready: onsubmit="validateForm()" -->
+                    <input id="todo-input" type="text" name="content" placeholder="what do you need to get done?"/>
+                    <input type="submit" value="Add"/>
+                </form>
+            </div>
+        </div>
+        <!-- Optional JavaScript -->
+        <script>
+            window.onload = function() {
+                var input = document.getElementById("todo-input").focus();
+            }
+        </script>
+    </body>
+</html>
