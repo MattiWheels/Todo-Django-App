@@ -3,11 +3,12 @@ html {
 }
 
 h1 {
-  color: #de5243;
+  color: #545f6d;
+  font-weight: 700;
 }
 
-.todoitem-list {
-  width: 500px;
+h2 {
+  color: #de5243;
 }
 
 .todo-container li input {
