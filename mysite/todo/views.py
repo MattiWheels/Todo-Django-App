@@ -8,12 +8,19 @@ import pytz
 # Render the todo.html template and in the same request, send a dictionary of
 # all items in the db.
 def todoView(request):
-    all_todo_items = TodoItem.objects.all()
+
+    all_items = TodoItem.objects.all()
+
+    # Comment out whichever template you don't want to render.
+    #return render(request, 'testing.html',
     return render(request, 'todo.html',
-        {'all_items': all_todo_items})
+        {
+            'all_items': all_items,
+        }
+    )
 
 # Create new TodoItem object and save it to the db.
-def addTodo(request):
+def addTodo(request): # addTodo(request, list_id) to be implemented
     new_item = TodoItem()
     new_item.content = request.POST['content']
 
@@ -21,7 +28,7 @@ def addTodo(request):
     date_format = '%m/%d/%Y %H:%M:%S %Z'
     date = datetime.now(tz=pytz.utc)
     date = date.astimezone(timezone('US/Pacific'))
-    new_item.time = date.strftime(date_format)
+    new_item.time = date.strftime(date_format)    
 
     # Save item to db and redirect to home page.
     new_item.save()

@@ -4,3 +4,4 @@
 /mysite/todo/migrations
 /mysite/mysite/secret_key.py
 /mysite/db.sqlite3
+/mysite/templates/testing.html
