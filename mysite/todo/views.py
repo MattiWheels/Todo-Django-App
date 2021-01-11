@@ -14,13 +14,14 @@ def todoView(request):
     all_items = {}
 
     if list_count is None:
-        all_items['list_0'] = []
+        all_items['list_0'] = {}
+        list_count = 1
     elif list_count > 0:
         for i in range(list_count):
-            items = [x for x in TodoItem.objects.filter(todolist=i)]
-            all_items[f'list_{i}'] = items
+            all_items[f'list_{i}'] = TodoItem.objects.filter(todolist=i)
     else:
-        all_items['list_0'] = [x for x in TodoItem.objects.filter(todolist=0)]
+        all_items['list_0'] = TodoItem.objects.filter(todolist=0)
+        list_count = 1
 
     context = {
         'all_items': all_items,

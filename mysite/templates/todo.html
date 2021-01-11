@@ -15,22 +15,31 @@
     <title>- TO DO -</title>
   </head>
 
-  <body class="bg-dark">
-    <h1 class="p-4">todo</h1> <!--Logo-->
+  <body class="bg-dark mt-5">
 
-    <!--Begin primary todo list container-->
+    <!--Heading & 'add todo list' Button-->
+    <div class="heading-container">
+      <h1 class="p-4 d-inline-block text-secondary">todo</h1> <!--Logo-->
+      <div class="mr-4 d-inline-block">
+        <form action="">{% csrf_token %}
+          <button class="btn btn-secondary text-dark">+</button>
+        </form>
+      </div>
+    </div>
 
+    <!--Primary todo list container-->
     <div class="todolist-container row d-flex flex-wrap"> <!--There will be multiple `todoitem-list` in this container-->
+      {% for td_list, td_items in all_items.items %}
         <div class="todolist-list col">
           <div class="list-heading p-4">
-            <h2>Only list available :(</h2>
+            <h2>{{ td_list }}</h2>
           </div>
           <ul class="list-group list-group-flush">
-            {% for todo in all_items.list_0 %}
+            {% for td in td_items %}
               <li class="todoitem list-group-item bg-dark text-light">
-                {{ todo.content }}<br>
-                <span id="time">{{ todo.time }}</span><br> <!-- List todo item content and time -->
-                <form action="/deleteTodo/{{ todo.id }}/" method="post">{% csrf_token %}
+                {{ td.content }}<br>
+                <span id="time">{{ td.time }}</span><br> <!-- List todo item content and time -->
+                <form action="/deleteTodo/{{ td.id }}/" method="post">{% csrf_token %}
                   <input class="btn btn-link" id="deleteBtn" type="submit" value="Delete"/> <!-- Delete todo item -->
                 </form>
               </li>
@@ -38,17 +47,12 @@
           </ul>
           <div class="addform">
             <form class="w-100 p-4" name="addTodoForm" action="/addTodo/" method="post">{% csrf_token %} <!-- When next page validation is ready: onsubmit="validateForm()" -->
-              <input id="todo-input" class="w-75" type="text" name="content" placeholder="what to do..."/>
+              <input id="todo-input" class="w-75" type="text" name="content" placeholder="what to do..." required/>
               <input class="px-4 float" type="submit" value="Add"/>
             </form>
           </div>
         </div>
-    </div>
-
-    <div class="mr-4 float-right">
-      <form action="">{% csrf_token %}
-        <button class="btn btn-secondary">+</button>
-      </form>
+      {% endfor %}
     </div>
 
     <!-- Optional JavaScript -->
