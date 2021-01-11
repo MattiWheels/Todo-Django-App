@@ -11,13 +11,14 @@ import pytz
 def todoView(request):
 
     list_count = TodoItem.objects.all().aggregate(Max('todolist'))['todolist__max']
+    print(list_count)
     all_items = {}
 
     if list_count is None:
         all_items['list_0'] = {}
         list_count = 1
     elif list_count > 0:
-        for i in range(list_count):
+        for i in range(list_count+1):
             all_items[f'list_{i}'] = TodoItem.objects.filter(todolist=i)
     else:
         all_items['list_0'] = TodoItem.objects.filter(todolist=0)
@@ -28,18 +29,20 @@ def todoView(request):
         'list_count': list_count,
     }
 
+    print(all_items)
     return render(request, 'todo.html', context)
 
 # Create new TodoItem object and save it to the db.
-def addTodo(request): # addTodo(request, list_id) to be implemented
+def addTodo(request, list_id): # addTodo(request, list_id) to be implemented
     new_item = TodoItem()
     new_item.content = request.POST['content']
+    new_item.todolist = list_id
 
     # Generate timestamp for todo item.
     date_format = '%m/%d/%Y %H:%M:%S %Z'
     date = datetime.now(tz=pytz.utc)
     date = date.astimezone(timezone('US/Pacific'))
-    new_item.time = date.strftime(date_format)    
+    new_item.time = date.strftime(date_format)
 
     # Save item to db and redirect to home page.
     new_item.save()
@@ -50,6 +53,3 @@ def deleteTodo(request, todo_id):
     item_to_delete = TodoItem.objects.get(id=todo_id)
     item_to_delete.delete()
     return HttpResponseRedirect('/')
-
-#def addTodoList(request):
-    
