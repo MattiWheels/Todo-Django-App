@@ -21,4 +21,5 @@ Django 3.1.4<br>
 - Install the required packages: `pip install -r requirements.txt`
 - Update the `SECRET_KEY` variable (in the settings.py module) to have a random string of characters (a random string of characters will work fine for testing purposes)
 - Create necessary database files by navigating to mysite (`cd mysite`) and running the following bash commands: `python manage.py makemigrations` followed by `python manage.py migrate`
-
+- Launch the server with `python manage.py runserver`
+- You should now be able to access the app from your browser at 127.0.0.1:8000
