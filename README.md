@@ -18,6 +18,6 @@ Django 3.1.4<br>
 - Set up a virtual environment to consolidate packages: `python -m venv venv`
 - Activate virtual environment: `venv\Scripts\activate` or `source venv/bin/activate` on Unix based systems
 - Install the required packages: `pip install -r requirements.txt`
-- Update the `SECRET_KEY` variable to have a random string of characters (fine for testing purposes)
+- Update the `SECRET_KEY` variable in the settings module to have a random string of characters (fine for testing purposes)
 - Be sure to create necessary database files by navigating to mysite (`cd mysite`) and running the following bash commands: `python manage.py makemigrations` followed by `python manage.py migrate`
 
