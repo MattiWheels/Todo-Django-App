@@ -7,9 +7,19 @@ from pytz import timezone
 import pytz
 
 
+# Render the todo.html template and send a dictionary of all items in the db.
+# This is the default view located at '/'
+def todoView(request):
 
+    all_items = getLists()
 
+    context = {
+        'all_items': all_items,
+    }
 
+    return render(request, 'todo.html', context)
+
+# Create a new list and render todo.html with context containing the new list
 def addList(request, new_list_id):
 
     all_items = getLists()
@@ -17,6 +27,7 @@ def addList(request, new_list_id):
 
     return render(request, 'todo.html', {'all_items': all_items})
 
+# Gets all of the todolists and separates them by number (models.TodoItem.todolist)
 def getLists():
 
     # Max_list is the highest numbered todolist attribute (integer)
@@ -37,17 +48,6 @@ def getLists():
         all_items['list_0'] = TodoItem.objects.filter(todolist=0)
 
     return all_items
-
-# Render the todo.html template and send a dictionary of all items in the db.
-def todoView(request):
-
-    all_items = getLists()
-
-    context = {
-        'all_items': all_items,
-    }
-
-    return render(request, 'todo.html', context)
 
 # Create new TodoItem object and save it to the db.
 def addTodo(request, list_id):
