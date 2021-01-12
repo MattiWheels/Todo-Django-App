@@ -23,7 +23,7 @@ def getLists():
     max_list = TodoItem.objects.all().aggregate(Max('todolist'))['todolist__max']
     all_items = {}
 
-    # If no todolists or todolist items exist, create empty todolist
+    # If no todolists or todolist items exist, create empty todolist / maintain default todolist
     if max_list is None:
         all_items['list_0'] = {}
 
