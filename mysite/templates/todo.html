@@ -21,7 +21,7 @@
     <div class="heading-container">
       <h1 class="p-4 d-inline-block text-secondary">todo</h1> <!--Logo-->
       <div class="mr-4 d-inline-block">
-        <form action="">{% csrf_token %}
+        <form action="/addList/{{ all_items|length }}/">{% csrf_token %}
           <button class="btn btn-secondary text-dark">+</button>
         </form>
       </div>
@@ -30,13 +30,15 @@
     <!--Primary todo list container-->
     <div class="todolist-container row d-flex flex-wrap"> <!--There will be multiple `todoitem-list` in this container-->
       {% for td_list, td_items in all_items.items %}
-        {% with c=forloop.counter0 %}
+        {% with list_id=forloop.counter0 %}
+          <!--List Title (Uses the key, td_list, as title)-->
           <div class="todolist-list col">
             <div class="list-heading p-4">
               <h2>{{ td_list }}</h2>
             </div>
             <ul class="list-group list-group-flush">                        
               {% for td in td_items %}
+                <!--List Item (Includes todo item, time, and delete button)-->
                 <li class="todoitem list-group-item bg-dark text-light">
                   {{ td.content }}<br>
                   <span id="time">{{ td.time }}</span><br> <!-- List todo item content and time -->
@@ -46,8 +48,9 @@
                 </li>
               {% endfor %}
             </ul>
+            <!--List Form (For adding todo items)-->
             <div class="addform">
-              <form class="w-100 p-4" name="addTodoForm" action="/addTodo/{{ c }}/" method="post">{% csrf_token %} <!-- When next page validation is ready: onsubmit="validateForm()" -->
+              <form class="w-100 p-4" name="addTodoForm" action="/addTodo/{{ list_id }}/" method="post">{% csrf_token %}
                 <input id="todo-input" class="px-2 w-75" type="text" name="content" placeholder="what to do..." required/>
                 <input class="px-4 float" type="submit" value="Add"/>
               </form>
@@ -63,16 +66,6 @@
       window.onload = function() {
         var input = document.getElementById("todo-input").focus();
       }
-
-      /*
-      function validateForm() {
-        var x = document.forms["addTodoForm"]["content"].value;
-        if (x == "" || x == null) {
-          alert("Type something before submitting.");
-          return false;
-        }
-      }
-      */
 
     </script>
 

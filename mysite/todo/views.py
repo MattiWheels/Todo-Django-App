@@ -6,34 +6,51 @@ from datetime import datetime
 from pytz import timezone
 import pytz
 
-# Render the todo.html template and in the same request, send a dictionary of
-# all items in the db.
-def todoView(request):
 
-    list_count = TodoItem.objects.all().aggregate(Max('todolist'))['todolist__max']
-    print(list_count)
+
+
+
+def addList(request, new_list_id):
+
+    all_items = getLists()
+    all_items[f'list_{new_list_id}'] = {}
+
+    return render(request, 'todo.html', {'all_items': all_items})
+
+def getLists():
+
+    # Max_list is the highest numbered todolist attribute (integer)
+    max_list = TodoItem.objects.all().aggregate(Max('todolist'))['todolist__max']
     all_items = {}
 
-    if list_count is None:
+    # If no todolists or todolist items exist, create empty todolist
+    if max_list is None:
         all_items['list_0'] = {}
-        list_count = 1
-    elif list_count > 0:
-        for i in range(list_count+1):
+
+    # If there are multiple todolists, pair them with their values in a dictionary
+    elif max_list > 0:
+        for i in range(max_list+1):
             all_items[f'list_{i}'] = TodoItem.objects.filter(todolist=i)
-    else:
+
+    # If only the default list exists with some todos, 
+    else: 
         all_items['list_0'] = TodoItem.objects.filter(todolist=0)
-        list_count = 1
+
+    return all_items
+
+# Render the todo.html template and send a dictionary of all items in the db.
+def todoView(request):
+
+    all_items = getLists()
 
     context = {
         'all_items': all_items,
-        'list_count': list_count,
     }
 
-    print(all_items)
     return render(request, 'todo.html', context)
 
 # Create new TodoItem object and save it to the db.
-def addTodo(request, list_id): # addTodo(request, list_id) to be implemented
+def addTodo(request, list_id):
     new_item = TodoItem()
     new_item.content = request.POST['content']
     new_item.todolist = list_id
