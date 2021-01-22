@@ -9,7 +9,7 @@ Django 3.1.4<br>
 - Add items to the todo list.
 - Delete items from the todo list.
 - Timestamp new todo items.
-- Multiple lists (cannot yet create new list with '+' button).
+- Multiple lists by clicking the '+' button.
 
 # Installation
 
